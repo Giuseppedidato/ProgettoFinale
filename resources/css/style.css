@@ -1,3 +1,10 @@
 body{
     background-color:#fff000 ;
 }
+
+.sfondoVerde{
+    background-color:rgb(20, 137, 5);
+}
+
+.resized { width: auto; height: 650px; }
+

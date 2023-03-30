@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\FrontController;
+use App\Http\Livewire\CreateAnnouncement;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +15,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+//route libere
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [FrontController::class, 'welcome'])->name('welcome');
+
+Route::get('/categoria/{category}',[FrontController::class, 'categoryShow'])->name('categoryShow');
+
+Route::get('/dettaglio/annuncio/{announcement}',[AnnouncementController::class,'showAnnouncement'])->name('announcements.show');
+
+Route::get('/tutti/annunci/',[AnnouncementController::class,'indexAnnouncement'])->name('announcements.index');
+
+
+
+//route protette da login
+Route::middleware('auth')->group(function()
+{
+Route::get('/new/Announcement',[AnnouncementController::class, 'createAnnouncement'])->name('announcements.create');
+
+
+
+
 });
+

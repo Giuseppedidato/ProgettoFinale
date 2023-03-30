@@ -29,6 +29,11 @@
             </div>
             @endforeach
 
+
+        </div>
+
+        <div class="pagination justify-content-center ">
+                    {{ $announcements->links() }}
         </div>
 
     </div>

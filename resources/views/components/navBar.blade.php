@@ -9,6 +9,24 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{ route('announcements.index') }}">Tutti gli annunci</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <button class="btn btn-warning dropdown-toggle" id="categoriesDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Categorie
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        @foreach ($categories as $category )
+                        <li><a class="dropdown-item" href="{{ route ('categoryShow', compact('category')) }}" >{{$category->name }}</a></li>
+
+                        @endforeach
+                    </ul>
+                  </li>
+
+
                 @guest
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('register') }}">Registrati</a>
@@ -17,35 +35,42 @@
                     <a class="nav-link" href="{{ route('login') }}">Accedi</a>
                 </li>
 
+
+
                 @else
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('announcements.create') }}">Inserisci Annuncio</a>
+            </li>
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    {{ Auth::user()->name }}
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="/logout" onclick="event.
-                        preventDefault();getElementById('form-logout').submit();">Logout</a></li>
-                        <form id="form-logout" action="{{ route('logout') }}" method="POST" class="d-none">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                {{ Auth::user()->name }}
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Inserisci </a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider"><p class=" "></p> </li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/logout" onclick="event.
+                    preventDefault();getElementById('form-logout').submit();">Logout</a></li>
+                    <form id="form-logout" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
-                        </form>
-                 </ul>
-                </li>
+                    </form>
+                </ul>
+            </li>
 
-                @endguest
-            </ul>
-        </div>
-        <form class="d-flex " role="search">
-            <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-
-        </form>
-
+            @endguest
+        </ul>
     </div>
+    <form class="d-flex " role="search">
+        <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+
+</div>
 
 </nav>
 
