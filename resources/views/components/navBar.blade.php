@@ -26,6 +26,18 @@
                     </ul>
                   </li>
 
+                  <li class="nav-item dropdown">
+                    <button class="btn btn-warning dropdown-toggle" id="usersDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                      Autori
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        @foreach ($users as $user )
+                        <li><a class="dropdown-item" href="{{ route ('userShow', compact('user')) }}" >{{$user->name }}</a></li>
+
+                        @endforeach
+                    </ul>
+                  </li>
+
 
                 @guest
                 <li class="nav-item">

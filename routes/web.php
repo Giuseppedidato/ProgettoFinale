@@ -25,6 +25,7 @@ Route::get('/dettaglio/annuncio/{announcement}',[AnnouncementController::class,'
 
 Route::get('/tutti/annunci/',[AnnouncementController::class,'indexAnnouncement'])->name('announcements.index');
 
+Route::get('/Autore/{user}',[FrontController::class, 'userShow'])->name('userShow');
 
 
 //route protette da login

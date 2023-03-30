@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Announcement;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Schema;
@@ -31,6 +32,10 @@ class AppServiceProvider extends ServiceProvider
 
         if(Schema::hasTable('announcements')){
             View::share ('announcements',Announcement::all());
+        }
+
+        if(Schema::hasTable('users')){
+            View::share ('users',User::all());
         }
 
         Paginator::useBootstrap();
