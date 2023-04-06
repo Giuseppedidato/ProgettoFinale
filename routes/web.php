@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\RevisorController;
+use App\Http\Controllers\VideoController;
 use App\Http\Livewire\CreateAnnouncement;
 use Illuminate\Support\Facades\Route;
 
@@ -33,8 +35,29 @@ Route::middleware('auth')->group(function()
 {
 Route::get('/new/Announcement',[AnnouncementController::class, 'createAnnouncement'])->name('announcements.create');
 
+//* diventa revisore
+Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->name('become.revisor');
 
-
+//* Abilita revisore
+Route::get('/rendi/revisore/{user}', [RevisorController::class, 'makeRevisor'])->name('make.revisor');
 
 });
 
+//* Rout revisore
+
+Route::middleware('isRevisor')->group(function()
+{
+//* home revisore
+Route::get('/revisor/home',[RevisorController::class, 'index'])->name('revisor.index');
+
+//* sccetta annuncio
+Route::patch('/accetta/annuncio/{announcement}', [RevisorController::class, 'acceptAnnouncement'])->name('revisor.accept_announcement');
+
+//* rifiuta annuncio
+Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rejectAnnouncement'])->name('revisor.reject_announcement');
+});
+
+
+
+
+//Route::get('/video',[VideoController::class,'create'] )->name('videos');

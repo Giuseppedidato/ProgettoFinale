@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +17,15 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        $categories = ['politica', 'economia', 'food&drink', 'sport', 'intrattenimento', 'tech'];
+
+    foreach($categories as $category){
+        Category::create([
+            'name'=> $category,
+        ]);
+    }
+
     }
 
     /**

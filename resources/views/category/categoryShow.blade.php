@@ -6,7 +6,12 @@
              <h1 class="">Presto.it</h1>
             <p class="h2 my-2 fw-bold">Esplora la categoria: {{ $category->name }}</p>
         </div>
+        @if(session()->has('message'))
+        <div class="flex flex-row justify-center my-2 alert alert-success">
+            {{ session('message') }}
+        </div>
 
+        @endif
 
         <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 mt-3">
             @forelse($category->announcements as $announcement)

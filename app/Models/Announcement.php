@@ -15,7 +15,9 @@ class Announcement extends Model
         'price',
         'image',
         'user_id',
-        'category_id'
+        'category_id',
+        'created_at',
+        'is_accepted',
     ];
 
     public function category()
@@ -26,6 +28,18 @@ class Announcement extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function setAccepted($value)
+    {
+        $this->is_accepted = $value;
+        $this->save();
+        return true;
+    }
+
+    public static function toBeRevisionedCount()
+    {
+        return Announcement::where('is_accepted', null)->count();
     }
 }
 

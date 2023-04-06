@@ -1,5 +1,5 @@
 <div class="">
-    <h1 class="sfondoVerde ">Ciao {{ auth()->user()->name }}br Inserisci il tuo annuncio</h1>
+    <h1 class="sfondoVerde ">Ciao {{ auth()->user()->name }} <br>Inserisci qui il tuo annuncio</h1>
     @if(session()->has('message'))
     <div class="flex flex-row justify-center my-2 alert alert-success">
         {{ session('message') }}

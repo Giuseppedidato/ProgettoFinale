@@ -1,10 +1,54 @@
-body{
-    background-color:#fff000 ;
+body {
+    background-color: var(--white);
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 .sfondoVerde{
-    background-color:rgb(20, 137, 5);
+    background-color:#317429;
 }
 
-.resized { width: auto; height: 650px; }
+
+
+.header-title {
+    height: 500px;
+    background-color: #e7e7e7;
+    position: relative;
+}
+
+.header1{
+    margin-top: 150px;
+}
+
+.footerHeigt {
+   marker-end: none;
+}
+
+.coloresfondonero{
+    background-color: black;
+}
+.textwhite{
+    color: ghostwhite;
+}
+.fotreg{
+    margin-top: 290px;
+    background-color:black;
+}
+.spazio
+{
+    margin-inline-end: 243px;
+}
+
+.spazio1{
+    margin-inline-end: 130px;
+}
+.larghezza{
+   width: 700px;
+}
+
+.bordi{
+    border-color: #e7e7e7;
+}
+
 

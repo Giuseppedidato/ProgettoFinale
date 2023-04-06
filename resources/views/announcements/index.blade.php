@@ -5,7 +5,12 @@
             <h1 class="sfondoVerde">Presto.it</h1>
             <p class="h2 my-2 fw-bold">Ecco i nostri annunci</p>
         </div>
+        @if(session()->has('message'))
+        <div class="flex flex-row justify-center my-2 alert alert-success">
+            {{ session('message') }}
+        </div>
 
+        @endif
 
         <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
             @foreach ($announcements as $announcement)
@@ -18,8 +23,11 @@
                         <h5 class="card-title">{{$announcement->title}}</h5>
                         <h3 class="card-text">{{$announcement->body}}</h3>
                         <p class="card-text">{{$announcement->price}}</p>
-                        <a href="{{ route('announcements.show', compact('announcement')) }}" class="btn btn-primary shadow">Dettaglio</a>
-                        <a href="#" class="btn sfondoVerde ">Categoria: {{ $announcement->category->name }}</a>
+                        <div class="grid gap-0 row-gap-3">
+                            <a href="{{ route('announcements.show', compact('announcement')) }}" class="btn btn-primary p-2 g-col-6 ">Dettaglio</a>
+                            <a href="{{ route ('categoryShow', ($announcement->category)) }}" class="btn sfondoVerde p-2 g-col-6">Categoria: {{ $announcement->category->name }}</a>
+                        </div>
+
                         <br
                         <p class="card-footer">Pubblicato il: {{$announcement->created_at->format('d/m/Y')}}<br>
                             Autore :{{ $announcement->user->name ?? '' }}</p>
@@ -29,11 +37,12 @@
             </div>
             @endforeach
 
+            <div class="pagination justify-content-center mt-5">
+                {{ $announcements->links() }}
 
-        </div>
+            </div>
 
-        <div class="pagination justify-content-center ">
-                    {{ $announcements->links() }}
+
         </div>
 
     </div>

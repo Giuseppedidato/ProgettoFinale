@@ -12,10 +12,15 @@
 
     <x-navBar/>
     <div class="min-vh-100">
+
+
         {{ $slot }}
+        
     </div>
 
+
     <x-footer/>
+
 @livewireScripts
 </body>
 </html>

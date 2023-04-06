@@ -1,4 +1,5 @@
 <x-layout>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-6 mx-auto">
@@ -50,5 +51,5 @@
         </div>
 
     </div>
-
+    <div class="fotreg"></div>
 </x-layout>
