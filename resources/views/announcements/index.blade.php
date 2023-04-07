@@ -12,9 +12,9 @@
 
         @endif
 
-        <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
-            @foreach ($announcements as $announcement)
 
+        <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3">
+            @forelse($announcements as $announcement)
             <div class="col-12 col-md-4 my-4 ">
                 <div class="p-3"></div>
                 <div class="card shadow" style="width: 18rem;">
@@ -35,7 +35,16 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+
+
+        @empty
+            <div class="col-12">
+                <div class="alert alert-wsrning py-3">
+                    <p><em>Non ci sono annunci per i parametri inseriti. <br> Prova a cambiarli</em></p>
+                </div>
+            </div>
+        @endforelse
+
 
             <div class="pagination justify-content-center mt-5">
                 {{ $announcements->links() }}

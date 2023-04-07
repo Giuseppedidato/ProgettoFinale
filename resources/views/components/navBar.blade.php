@@ -76,8 +76,8 @@
                         @endforeach
                     </ul>
                 </li>
-                <form class="d-flex d-inline  " role="search">
-                    <input class="form-control larghezza " type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex d-inline " action="{{ route('announcements.search') }}" method="GET">
+                    <input class="form-control larghezza " type="search" placeholder="Search" aria-label="Search" name="searched">
                     <button class="btn btn-outline-light me-5" type="submit">🔍</button>
                 </form>
 

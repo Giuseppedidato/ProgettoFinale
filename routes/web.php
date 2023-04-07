@@ -29,6 +29,9 @@ Route::get('/tutti/annunci/',[AnnouncementController::class,'indexAnnouncement']
 
 Route::get('/Autore/{user}',[FrontController::class, 'userShow'])->name('userShow');
 
+Route::get('/ricerca/annuncio', [FrontController::class,'searchAnnouncements'])->name('announcements.search');
+
+
 
 //route protette da login
 Route::middleware('auth')->group(function()

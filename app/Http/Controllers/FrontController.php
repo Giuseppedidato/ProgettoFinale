@@ -25,4 +25,11 @@ class FrontController extends Controller
     {
         return view('autore.usershow', compact('user'));
     }
+
+    public function searchAnnouncements(Request $request)
+    {
+        $announcements = Announcement::search($request->searched)->where('is_accepted', true)->paginate(10);
+
+        return view('announcements.index', compact('announcements'));
+    }
 }
