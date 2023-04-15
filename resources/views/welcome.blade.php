@@ -18,7 +18,7 @@
         <div class="row ">
             <div  class="col-12  coloresfondonero" >
                 <img src="https://picsum.photos/30" alt="">
-                <span class="textwhite">Impara e risparmi se scegli AulabSchool. Sconto promo Fino al 03 aprile.</span>
+                <span class="textwhite">Impara e risparmi se scegli AulabSchool. Sconto promo Fino al 03 aprile. Non perderti l'offerta cosa apetti?  📞03001245451</span>
             </div>
             <header class="container  header-title d-inline">
                 <div class="row ">
@@ -56,7 +56,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class=" ">
-                                <h1 class=""> <strong>Guarda gli ultimi Annunci selezionati per te </strong> </h1>
+                                <h1 class=""> <strong>{{ __('ui.titoloWelcome') }}</strong> </h1>
                                 <p class="h2 my-2 fw-bold"></p>
                             </div>
                         </div>
@@ -97,4 +97,5 @@
                     </div>
 
                 </div>
+
             </x-layout>

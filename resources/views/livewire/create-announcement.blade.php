@@ -1,5 +1,11 @@
 <div class="">
-    <h1 class="sfondoVerde ">Ciao {{ auth()->user()->name }} <br>Inserisci qui il tuo annuncio</h1>
+    <div class="row text-center">
+        <div>
+            <h1 class="sfondoVerde">Ciao {{ auth()->user()->name }} <br>Inserisci qui il tuo annuncio</h1>
+        </div>
+    </div>
+
+
     @if(session()->has('message'))
     <div class="flex flex-row justify-center my-2 alert alert-success">
         {{ session('message') }}
@@ -34,7 +40,7 @@
 
         <div class="row g-3 mt-3">
             <div class="col-12">
-                <label for="price" type="text" class="form-control">Prezzo
+                <label for="price" type="text" class="form-control ">Prezzo
                     <input wire:model="price" type="number"  class="form-control @error('price') is-invalid @enderror">
                 </label>
                 @error('price')
@@ -44,10 +50,13 @@
         </div>
         <aside class="row g-3 mt-3 ">
             <div class="col-4">
-                <select wire:model.defer="category" id="category"  class="form-control ">
+                <select wire:model.defer="category" id="category"  class="form-control form-control @error('category') is-invalid @enderror ">
                     <option value="">Scegli la categoria</option>
-                    @foreach ($categories as $category )
+                    @foreach ($categories as $category  )
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @error('category')
+                    {{ $message }}
+                    @enderror
                     @endforeach
                 </select>
 

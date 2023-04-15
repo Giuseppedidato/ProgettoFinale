@@ -6,6 +6,7 @@ use App\Models\Announcement;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Symfony\Contracts\Service\Attribute\Required;
 
 class CreateAnnouncement extends Component
 {
@@ -19,32 +20,32 @@ class CreateAnnouncement extends Component
     [
         'title'=>'required|min:4',
         'body'=> 'required|min:6',
-        'category'=> 'required',
         'price'=> 'required|numeric',
+        'category'=> 'required',
     ];
 
     protected $messages =[
         'required'=>'Campo Obbligatorio',
         'min'=>'Campo troppo corto',
-
+        'category' => 'Campo obbligatorio',
     ];
 
-    
+
     public function store()
     {
         $category = Category::find($this->category);
-
        $announcement = $category->announcements()->create([
             'title'=>$this->title,
             'body'=>$this->body,
             'price'=>$this->price,
+            'category'=>$this->category,
 
        ]);
+       Auth::user()->announcements()->save($announcement);
 
-        Auth::user()->announcements()->save($announcement);
+       session()->flash('message',' Annuncio caricato con successo');
+       $this->cleanForm();
 
-        session()->flash('message',' Annuncio caricato con successo');
-        $this->cleanForm();
     }
 
     public function updated($propertyName)

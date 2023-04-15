@@ -31,7 +31,7 @@ Route::get('/Autore/{user}',[FrontController::class, 'userShow'])->name('userSho
 
 Route::get('/ricerca/annuncio', [FrontController::class,'searchAnnouncements'])->name('announcements.search');
 
-
+Route::post('/lingua/{lang}', [FrontController::class, 'setLanguage'])->name('set_language_locale');
 
 //route protette da login
 Route::middleware('auth')->group(function()
@@ -53,11 +53,20 @@ Route::middleware('isRevisor')->group(function()
 //* home revisore
 Route::get('/revisor/home',[RevisorController::class, 'index'])->name('revisor.index');
 
-//* sccetta annuncio
+//* acetta annuncio
 Route::patch('/accetta/annuncio/{announcement}', [RevisorController::class, 'acceptAnnouncement'])->name('revisor.accept_announcement');
 
 //* rifiuta annuncio
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rejectAnnouncement'])->name('revisor.reject_announcement');
+
+//* verifica elenco annunci approvati
+Route::get('/tutti/annunci-approvati',[RevisorController::class,'AcceptedAnnouncement'])->name('revisor.show');
+
+//*verifica elenco annunci rifiutati
+Route::get('/tutti/annunci-negati',[RevisorController::class,'DeniedAnnouncement'])->name('revisor.showDenied');
+
+
+
 });
 
 

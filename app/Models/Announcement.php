@@ -21,6 +21,8 @@ class Announcement extends Model
         'is_accepted',
     ];
 
+
+
     public function toSearchableArray()
     {
         $category = $this->category;
@@ -54,6 +56,8 @@ class Announcement extends Model
     {
         return Announcement::where('is_accepted', null)->count();
     }
+
+    
 }
 
 

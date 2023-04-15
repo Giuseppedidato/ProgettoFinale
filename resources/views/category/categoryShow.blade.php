@@ -4,7 +4,7 @@
 
         <div class="row col-12 mt-3 sfondoVerde" style=".sfondoVerde">
              <h1 class="">Presto.it</h1>
-            <p class="h2 my-2 fw-bold">Esplora la categoria: {{ $category->name }}</p>
+            <p class="h2 my-2 fw-bold">Esplora la categoria: {{ $category->name  }}</p>
         </div>
         @if(session()->has('message'))
         <div class="flex flex-row justify-center my-2 alert alert-success">
@@ -14,7 +14,7 @@
         @endif
 
         <div class="row row-cols-2 row-cols-lg-4 g-2 g-lg-3 mt-3">
-            @forelse($category->announcements as $announcement)
+            @forelse($category->announcements->where('is_accepted', true)->sortByDesc('created_at') as $announcement)
             <div class="col-12 col-md-4 my-4 ">
                 <div class="p-3"></div>
                 <div class="card shadow" style="width: 18rem;">

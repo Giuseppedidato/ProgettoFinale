@@ -18,6 +18,20 @@ class RevisorController extends Controller
         return view('revisor.index', compact('announcement_to_check'));
     }
 
+    public function AcceptedAnnouncement(){
+        $announcement_to_reassign = Announcement::where('is_accepted', true  )->get();
+        return view('revisor.show', compact('announcement_to_reassign'));
+    }
+
+    Public Function backInreview(){
+        
+    }
+
+    public function DeniedAnnouncement(){
+        $announcement_to_Denied = Announcement::where('is_accepted', false  )->get();
+        return view('revisor.showDenied', compact('announcement_to_Denied'));
+    }
+
     public function acceptAnnouncement (Announcement $announcement)
     {
         $announcement->setAccepted(true);
