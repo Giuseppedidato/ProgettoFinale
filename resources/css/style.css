@@ -52,3 +52,19 @@ body {
 }
 
 
+.img-preview{
+    width: 700px;
+    height: 700px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .img-previeWelcome{
+    width: 250px;
+    height: 250px;
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+

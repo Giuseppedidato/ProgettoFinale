@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class AnnouncementController extends Controller
@@ -22,7 +23,7 @@ class AnnouncementController extends Controller
 
    public function indexAnnouncement()
    {
-    $announcements = Announcement::where('is_accepted', true)->Paginate(8);
+    $announcements = Announcement::orderBy('created_at', 'DESC')-> where('is_accepted', true)->Paginate(8);
     return view('announcements.index',compact('announcements'));
    }
 

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
@@ -19,6 +19,9 @@ class Announcement extends Model
         'category_id',
         'created_at',
         'is_accepted',
+        'announcements_id',
+
+
     ];
 
 
@@ -30,7 +33,7 @@ class Announcement extends Model
             'id'=>$this->id,
             'title'=>$this->title,
             'body'=>$this->body,
-            'category'=>$this->category,
+            'category'=>$category,
         ];
         return $array;
     }
@@ -57,7 +60,9 @@ class Announcement extends Model
         return Announcement::where('is_accepted', null)->count();
     }
 
-    
+    public function images(){
+        return $this->hasMany(image::class);
+    }
 }
 
 

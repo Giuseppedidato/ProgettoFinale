@@ -1,5 +1,5 @@
-<div class="">
-    <div class="row text-center">
+<div class="container">
+    <div class=" col-12">
         <div>
             <h1 class="sfondoVerde">Ciao {{ auth()->user()->name }} <br>Inserisci qui il tuo annuncio</h1>
         </div>
@@ -13,7 +13,7 @@
 
     @endif
 
-    <form wire:submit.prevent="store">
+    <form wire:submit.prevent="store" enctype="multipart/form-data">
         @csrf
 
         <div class="row g-3 mt-3">
@@ -65,14 +65,40 @@
 
         <div class="row g-3 mt-1">
             <div class="col-12 ">
-                <label for="image">Image</label>
-                <input type="file" name="image" id="image" class="form-control">
+                <label for="temporary_images">Image</label>
+                <input  type="file" name="images" wire:model="temporary_images" multiple class ="form-control shadow @error('temporary_images.*') is-invalid @enderror" placeholder="Img">
+                @error('temporary_images.*')
+                <span class="error">{{ $message }}</span>
+                @enderror
+            </div>
+
+        </div>
+
+        @if(!empty($images))
+
+        <div class="row g-3 mt-1">
+            <div class="col-12">
+                <h4 mt-2>Anteprima immagini</h4>
+                <div  class="row border border-4 border-info rounded shadow py-4">
+                    @foreach ($images as $Key =>$image)
+                    <div class="col my-3">
+                        <div class="img-preview mx-auto shadow rounded " style="background-image: url({{ $image->temporaryUrl() }})">
+                        </div>
+                        <button type="button" class="btn btn-danger text-center mt-2 mx-auto rounded-pill " wire:click="removeImage({{ $Key }})" >Cancella</button>
+                    </div>
+
+                    @endforeach
+                </div>
             </div>
         </div>
 
 
+
+        @endif
+
+
         <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-primary">Salva</button>
+            <button type="submit" class="btn btn-primary rounded-pill">Salva</button>
         </div>
 
     </form>

@@ -18,7 +18,7 @@
         <div class="row ">
             <div  class="col-12  coloresfondonero" >
                 <img src="https://picsum.photos/30" alt="">
-                <span class="textwhite">Impara e risparmi se scegli AulabSchool. Sconto promo Fino al 03 aprile. Non perderti l'offerta cosa apetti?  📞03001245451</span>
+                <span class="textwhite">Impara e risparmi se scegli AulabSchool. Sconto promo Fino al 03 aprile. Non perderti l offerta cosa apetti?  📞03001245451</span>
             </div>
             <header class="container  header-title d-inline">
                 <div class="row ">
@@ -75,7 +75,7 @@
                     <div class="col-12 col-md-4 my-4 ">
                         <div class="p-3"></div>
                         <div class="card shadow" style="width: 18rem;">
-                            <img src="https://picsum.photos/200" class="card-img-top p-3 " alt="...">
+                            <img src="{{!$announcement->images()->get()->isEmpty() ? Storage::url($announcement->images()->first()->path) : 'https://picsum.photos/200'}}" class="card-img-top p-3 " alt="...">
                             <div class="card-body">
                                 <h5 class="card-title">{{$announcement->title}}</h5>
                                 <h3 class="card-text">{{$announcement->body}}</h3>
