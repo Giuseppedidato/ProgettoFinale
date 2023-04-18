@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('Images', function (Blueprint $table) {
             $table->id();
              $table->unsignedBigInteger('announcement_id')->nullable();
              $table->foreign('announcement_id')->references('id')->on('announcements')->onDelete('cascade');

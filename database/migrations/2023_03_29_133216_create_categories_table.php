@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
 
-        $categories = ['politica', 'economia', 'food&drink', 'sport', 'intrattenimento', 'tech'];
+        $categories = ['Abbigliamento', 'Bellezza', 'Cancelleria e prodotti per ufficio', 'Elettronica', 'Fai da te', 'Film e TV', 'Giardino e giardinaggio', 'Informatica', 'Prodotti per animali domestici', 'Videogiochi'];
 
     foreach($categories as $category){
         Category::create([

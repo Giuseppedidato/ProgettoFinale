@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-use App\Models\image;
+use App\Models\Image;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
